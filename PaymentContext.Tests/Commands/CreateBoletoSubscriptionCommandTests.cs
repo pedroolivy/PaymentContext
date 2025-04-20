@@ -10,7 +10,7 @@ namespace PaymentContext.Tests.Commands
         {
             var command = new CreateBoletoSubscriptionCommand
             {
-                FirstName = "First"
+                FirstName = ""
             };
 
             command.Validate();
