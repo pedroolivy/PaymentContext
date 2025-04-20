@@ -38,7 +38,7 @@ namespace PaymentContext.Domain.Entities
         public DateTime PaidDate { get; private set; }
         public DateTime ExpireDate { get; private set; }
         public decimal Total { get; private set; }
-        public decimal TotalPaid { private get; set; }
+        public decimal TotalPaid { get; private set; }
         public string Payer { get; private set; }
         public Document Document { get; private set; }
         public Address Address { get; private set; }
