@@ -32,14 +32,11 @@ namespace PaymentContext.Domain.Entities
             foreach (var sub in _subscriptions)
                 if (sub.Active) hasSubscriptionActive = true;
 
-            if (hasSubscriptionActive)
-                AddNotification("Student.Subscriptions", "Você já tem uma assinatura ativa");
-
-            //Também podemos usar a mesma alternativa que ja foi usada em outros valueObjects
-            //AddNotifications(new Contract<Notification>()
-            //        .Requires()
-            //        .IsFalse(hasSubscriptionActive, "Student.Subscriptions", "Você já tem uma assinatura ativa")
-            //);
+            AddNotifications(new Contract<Notification>()
+                .Requires()
+                .IsFalse(hasSubscriptionActive, "Student.Subscriptions", "Você já tem uma assinatura ativa")
+                .AreNotEquals(0, subscription.Payments.Count, "Student.Subscription.Payments", "Esta assinatura não possui pagamentos")
+            );
 
             _subscriptions.Add(subscription);
         }

@@ -30,7 +30,6 @@ namespace PaymentContext.Domain.Entities
                 .IsGreaterThan(DateTime.Now, payment.PaidDate, "Subscription.Payments", "A data do Pagamento deve ser futura")
             );
 
-            //If(Valid) //Só adiciona se for válido...
             _payments.Add(payment);
         }
 
